@@ -1,0 +1,5 @@
+form{
+        height: 80%;
+            width: 80%;         /*  必须设置一个宽度， margin: 0 auto才能使之居于父组件中央*/
+            margin: 0 auto;
+}

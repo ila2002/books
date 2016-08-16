@@ -1,0 +1,82 @@
+﻿{% extends "base.html" %}
+    {% block content_ds %}
+        {% block style1 %}
+            <link rel="stylesheet" href="{{ url_for('static',filename='css/add.css') }}">
+        {% endblock %}
+        <div class="container "  >
+            <form method="POST" class="form-group" >
+                <!--{{ form.csrf_token }}-->
+                {{ form.hidden_tag() }}<!--这句很重要，如果没有，一直报错505-->
+
+                <div class=" form-inline ">
+                    <div class="form-group">
+                        <label for="bookname" >
+                            {{ form.bookname.label }}
+                            {{ form.bookname(id='bookname',class="form-control") }}
+                        </label>
+                    </div>
+
+                    <div class="form-group " >
+                        <label for="author">
+                            {{ form.author.label }}
+                            {{ form.author(class="form-control ",id="author") }}
+                        </label>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="sortedd" >
+                            {{ form.sortedd.label }}
+                            {{ form.sortedd(class="form-control",id="sortedd") }}
+                        </label>
+
+                    </div>
+                </div>
+                <!--以上三个输入框放在一个div里，用class="form-inline"来并排-->
+
+                    <div class="form-group-lg ">
+                        <label for="introduction" class=" col-md-offset-5">
+                            {{ form.introduction.label }}
+                        </label>
+                        {{ form.introduction(cols=80,rows=6, class='form-control',id="introduction") }}
+
+                    </div>
+
+                    <div class="form-group-lg ">
+                        <label for="commentt" class=" col-md-offset-5">
+                            {{ form.commentt.label }}
+                            </label>
+                        {{ form.commentt(cols=80,rows=6,class='form-control ', id="commentt") }}
+
+                    </div>
+            <div class="form-inline ">
+                <div class="form-group">
+                    <label for="booklink" >{{ form.booklink.label }}</label>
+                    {{ form.booklink(size=41, rows=8,class="form-group",id="booklink") }}
+                </div>
+
+                <div class="radio-inline">
+                    <label for="score" >
+                        {{ form.score.label }}
+                        {{ form.score(class="form-group-sm",id="score") }}
+                    </label>
+                </div>
+
+                <div class="form-group ">
+                    <label for="state" >{{ form.state.label }}
+                        {{ form.state(class="form-control-sm ",id="state") }}
+                    </label>
+                </div>
+            </div>
+
+            </div>
+                <!--以上两个textarea放在一个div，用class="form-inline"并排-->
+                {{ form.submit(size=80,class="btn-lg btn-default  col-md-offset-5") }}
+            </form>
+
+                <div class="form-group">
+                       <h2 align="center">{{ get_flashed_messages()[0] }}</h2>
+                </div>
+
+        </div>
+    {% endblock %}

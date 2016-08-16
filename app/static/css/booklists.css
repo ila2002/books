@@ -1,0 +1,36 @@
+.row{
+	font-family: 20px;
+	font-size: 20px;
+}
+
+#bookname{text-align: center;
+	color: #2acd1a;
+}
+#t0,#t1,#t2{
+    text-align:center;
+    margin:auto;
+    }
+tr{
+   }
+th{
+	font-size: 20px;
+	text-align: center;
+	}
+td{
+	font-size: 20px;
+}
+#td1{text-align: center;
+	color:#030303;
+	font-size:28px;
+}
+#td2{text-align: center;
+}
+#td3{text-align: center;
+
+}
+#td4{
+	color: #1E90FF;
+}
+#td5{
+	color:#0000EE;
+}

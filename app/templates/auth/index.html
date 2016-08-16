@@ -1,0 +1,10 @@
+﻿{% extends "base.html" %}
+
+{% block content_ds %}
+<h1  style="text-align:center">{{ index }}</h1><br />
+<h2  style="text-align:center"><a href="{{ url_for('add.add') }}">         添加记录</a></h2><br />
+<h2  style="text-align:center"><a href="{{ url_for('search.search') }}">         搜索记录</a></h2><br />
+<h2  style="text-align:center"><a href="{{ url_for('booklists.booklist',bk=bk) }}">         查看所有记录</a></h2><br />
+    <h1 align="center">Hello, {% if current_user.is_authenticated %}{{ current_user.username }}{% else %}Stranger{% endif %}!</h1>
+
+{% endblock %}

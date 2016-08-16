@@ -1,0 +1,47 @@
+
+.table{border:solid #add9c0;
+    border-width:3px 2px 2px 3px;
+    text-align:center;
+    margin:auto;
+    font-size: 20px;
+    }
+#bookname,#sortedd,#author,#score,#state,#commentt,#booklink,#pinglun{
+    font-size: 22px;
+    text-align: center;
+}
+
+#introduction{
+    font-size: 22px;
+    text-align: center;
+}
+
+tr{border:solid #add9c0;
+    border-width:3px 2px 2px 3px;
+   }
+th{
+	font-size: 20px;
+	text-align: center;
+    border:solid #add9c0;
+    border-width:3px 2px 2px 3px;
+	}
+
+td{text-align: center;
+	font-size: 20px;
+    border:solid #add9c0;
+    border-width:3px 2px 2px 3px;
+}
+
+p{font-size: 20px;}
+
+form{
+    text-align:center;margin:0px auto;
+}
+
+#ip1{
+    font-size: 25px;size:50;
+}
+
+.col-lg-4,.col-md-12{
+    font-size: 20px;
+border: #c9302c;
+}

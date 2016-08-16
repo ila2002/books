@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+    {% block content_ds %}
+        {% block style1 %}
+            <link rel="stylesheet" href="{{ url_for('static',filename='css/bk.css') }}">
+        {% endblock %}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-1">
+                    <img class="img-rounded" alt="封面" src="{{ url_for('static',filename='pics/cover.png') }}">
+                </div>
+
+                <div class="col-md-3 col-xs-push-1 ">
+                    <ul class="list-unstyled ">
+                        <li id="bookname" >{{ bksdata.bookname }}</li>
+                        <li id="author">作者:{{ bksdata.author }}</li>
+                        <li id="sortedd">分类:{{ bksdata.sortedd }}</li>
+                        <li id="score">评分:{{ bksdata.score }}</li>
+                        <li id="state">阅读状态:{{ bksdata.state }}</li>
+                        <li id="booklink"><a target="_blank" href="{{ bksdata.booklink }}">点击阅读</a></li>
+                    </ul>
+                </div>
+
+
+                    <div class="col-xs-3 col-xs-push-2">
+                         <div id="pinglun">******读书评论******</div>
+                        <blockquote>{{ (bksdata.commentt)|safe }}</blockquote>
+                    </div>
+
+            </div>
+
+            <div clas="panel-default">
+                <div class="panel-heading"  id="introduction">书籍简介</div>
+                <div class="panel-body"  id="introduction">{{ (bksdata.introduction)|safe }}</div>
+                <div class="panel-footer"></div>
+            </div>
+
+                <form method="post">
+                <input id="ip1" type="submit" value="修改" name="submit">
+                </form>
+        </div>
+    {% endblock %}
+
+
+<!--
+
+        <table class="table table-bordered" border="6">
+            <tr>
+                <th WIDTH="600">简介</th>
+            <th WIDTH="180">书名</th>
+                <th  WIDTH="100">作者</th>
+                <th WIDTH="80">分类</th>
+                <th WIDTH="200">书评</th>
+                <th>评分</th>
+                <th>状态</th>
+
+
+            </tr>
+
+            <tr>
+                <td>{{ (bksdata.introduction)|safe }}<br><a target="_blank" href="{{ bksdata.booklink }}">{{ bksdata.booklink }}</a></td>
+            <td>{{ bksdata.bookname }}</td>
+            <td>{{ bksdata.author }}</td>
+            <td>{{ bksdata.sortedd }}</td>
+            <td>{{ (bksdata.commentt)|safe }}</td>
+                <td>{{ bksdata.score }}</td>
+                <td>{{ bksdata.state }}</td>
+            </tr>
+
+        </table>
+            <form method="post">
+            <input id="ip1" type="submit" value="修改" name="submit">
+            </form>
+-->

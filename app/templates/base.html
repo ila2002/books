@@ -1,0 +1,45 @@
+﻿{% extends "bootstrap/base.html" %}
+       {% block title %}读书记录{% endblock %}
+        {% block head %}
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link href="{{ url_for('static',filename='css/bootstrap.min.css') }}" rel="stylesheet">
+            <script src="{{ url_for('static',filename='jquery.min.js') }}"></script>
+            <script src="{{ url_for('static',filename='bootstrap.min.js') }}"></script>
+            <style>
+                body {
+                    background:url({{ url_for('static',filename='pics/author2.jpg') }});
+                    background-size:cover;
+                }
+                {% block style1 %}{% endblock %}
+
+            </style>
+            {% block head1 %}{% endblock %}
+        {% endblock %}
+
+        {% block navbar %}
+
+            <ul class="nav nav-tabs">
+               <li><a href="{{ url_for('auth.index') }}"><font size="6">首页</font></a></li>
+               <li><a href="{{ url_for('add.add') }}"><font size="6">添加记录</font></a></li>
+               <li><a href="{{ url_for('search.search') }}"><font size="6">搜索记录</font></a></li>
+               <li><a href="{{ url_for('booklists.booklist') }}"><font size="6">查看所有</font></a></li>
+               <li><a href="{{ url_for('qsbk.qsbk') }}"><font size="6">糗事百科</font></a></li>
+
+                <li><a href="{{ url_for('auth.register') }}"><font size="6">注册</font></a></li>
+                {% if current_user.is_authenticated %}
+                    <li><a href="{{ url_for('login.login') }}"><font size="6">{{ current_user.username }}</font></a></li>
+                {% else %}
+                    <li><a href="{{ url_for('login.login') }}"><font size="6">登录</font></a></li>
+                {% endif %}
+                <li><a href="{{ url_for('auth.logout') }}"><font size="6">退出</font></a></li>
+            </ul>
+        {% endblock %}
+    {% block content %}
+        {% block content_ds %}{% endblock %}
+    {% endblock %}
+    {% block scripts %}
+        <footer>    <div class="container" align="center">
+            <font size="6">Copyright 2015 by</font> <a href="{{ url_for('auth.index') }}"><font size="6">待到秋来九月八</font></a>
+        </footer>
+    {% endblock %}
+

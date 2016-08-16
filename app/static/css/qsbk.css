@@ -1,0 +1,9 @@
+.row{
+	font-family: 20px;
+	font-size: 20px;
+}
+#link,#link2,#content,#funny,#reply{
+	text-align: center;
+	color:#030303;
+	font-size:22px;
+}

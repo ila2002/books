@@ -1,0 +1,117 @@
+﻿{% extends "base.html" %}
+{% from "bootstrap/pagination.html" import render_pagination %}
+    {% block content_ds %}
+        {% block style1 %}
+            <link rel="stylesheet" href="{{ url_for('static',filename='css/booklists.css') }}">
+        {% endblock %}
+
+        {% if pagination %}
+            <div class="row">
+
+                    {% for post in posts %}
+                        <div class="col-lg-8 col-xs-push-2">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <div id="td1" class="col-md-4 col-xs-push-3">
+                                    <a  id="bookname",target="_blank" href="/booklists/{{ post.id }}" >{{ post.bookname }}</a>
+                                </div>
+                                <div id="td2">
+                                    作者:{{ post.author }}
+                                </div>
+                                <div id="td3">
+                                    分类:{{ post.sortedd }}
+                                </div>
+
+                            </div>
+                            <div class="panel-body">
+                                <table class="table table-bordered table-hover">
+                                    <tr>
+                                        <td id="td1">
+                                            {{ (post.introduction)|safe }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td id="td2">书站链接:<a href="{{ post.booklink }}" target="_blank">{{ post.booklink }}</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td id="td3">{{ (post.commentt)|safe }}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="panel-footer">
+                                评分:{{ post.score }},状态:{{ post.state }}
+                            </div>
+                        </div>
+                        </div>
+                    {% endfor %}
+                <div class="col-lg-6 col-xs-push-4">{{ render_pagination(pagination) }}</div>
+            </div>
+        {% endif %}
+
+
+    {% endblock %}
+
+
+<!--
+<div class="col-lg-4">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <a  id="bookname",target="_blank" href="/booklists/{{ posts[0].id }}" >{{ posts[0].bookname }}</a><br>作者:{{ posts[0].author }}<br> 分类:{{ posts[0].sortedd }}
+                            </div>
+                            <div class="panel-body">
+                                <table class="table table-bordered table-hover">
+                                    <tr>
+                                        <td>
+                                            {{ (posts[0].introduction)|safe }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>书链:<a href="{{ posts[0].booklink }}" target="_blank">{{ posts[0].booklink }}</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td id="td3">{{ (posts[0].commentt)|safe }}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="panel-footer">
+                                评分:{{ posts[0].score }},状态:{{ posts[0].state }}
+                            </div>
+                        </div>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+                <div class="col-lg-4">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <a  id="bookname",target="_blank" href="/booklists/{{ posts[1].id }}" >{{ posts[1].bookname }}</a><br>作者:{{ posts[1].author }}<br> 分类:{{ posts[1].sortedd }}
+                            </div>
+                            <div class="panel-body">
+                                <table class="table table-bordered table-hover">
+                                    <tr>
+                                        <td>
+                                            {{ (posts[1].introduction)|safe }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>书链:<a href="{{ posts[1].booklink }}" target="_blank">{{ posts[1].booklink }}</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td id="td3">{{ (posts[1].commentt)|safe }}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="panel-footer">
+                                评分:{{ posts[1].score }},状态:{{ posts[1].state }}
+                            </div>
+                        </div>
+                        </div>
+-->

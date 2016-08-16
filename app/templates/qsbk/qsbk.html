@@ -1,0 +1,48 @@
+﻿{% extends "base.html" %}
+{% from"bootstrap/pagination.html" import render_pagination %}
+    {% block content_ds %}
+
+        {% block style1 %}
+            <link rel="stylesheet" href="{{ url_for('static',filename='css/qsbk.css') }}">
+        {% endblock %}
+
+
+
+        <div class="container">
+            <form action="/qsbk/" method="post" class="form-inline col-lg-6 col-xs-push-3">
+                <input  class="btn btn-success  btn-lg btn-block" type="submit" value="更新" name="update" >
+            </form>
+            <p>{{ get_flashed_messages()[0] }}</p>
+
+            <div class="row">
+                {% for i in posts %}
+                    <div class="col-lg-8 col-xs-push-2">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <div id="link2">
+                                    <a target="_blank" id="link" href={{ (i.link)|safe }}>{{ i.author}}</a>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <div id="content" class="col-md-12">
+                                    {{ (i.content)|safe }}
+                                </div>
+                            </div>
+                            <div class="panel-footer">
+                                <div class="row">
+                                    <div class="col-md-4 col-xs-push-2",id="funny">
+                                        点赞:{{ i.funny}}
+                                    </div>
+                                    <div class="col-md-4 col-xs-push-4",id="reply">
+                                        回复:{{ i.reply }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                <div class="col-lg-6 col-xs-push-4">{{ render_pagination(pagination) }}</div>
+            </div>
+
+        </div>
+    {% endblock %}

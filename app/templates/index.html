@@ -1,0 +1,21 @@
+﻿{% extends "base.html" %}
+    {% block scripts %}
+        {{ pagedown.include_pagedown() }}
+    {% endblock %}
+    {% block content_ds %}
+            {% block style1 %}
+                <link rel="stylesheet" href="{{ url_for('static',filename='css/index.css') }}">
+                {% endblock %}
+
+        <form action="/" method="POST" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+
+            <h1>上传文件</h1>
+            <h1>注册用户请登录.</h1><h1>登录后上传文件到个人目录下</h1>
+            {{ form.file() }}
+            <br>
+            {{ form.body(rows=10,cols=150) }}
+            <br>
+            {{ form.submit() }}
+        </form>
+    {% endblock %}

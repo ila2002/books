@@ -1,0 +1,11 @@
+{%  extends "base.html"  %}
+{% import "bootstrap/wtf.html" as wtf %}
+    {% block content_ds %}
+            <h1 align="center">填写注册信息</h1>
+            <center>
+                <div class="col-lg-push-4">
+                    {{ wtf.quick_form(form) }}
+                </div>
+                </center>
+        <h2 align="center">{{ get_flashed_messages()[0] }}</h2>
+    {% endblock %}

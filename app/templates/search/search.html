@@ -1,0 +1,77 @@
+﻿{% extends "base.html" %}
+{% from "bootstrap/pagination.html" import render_pagination %}
+    {% block content_ds %}
+        <!--下面开始导入css-->
+        {% block style1 %}
+            <link rel="stylesheet" href="{{ url_for('static',filename='css/search.css') }}">
+        {% endblock %}
+        <!--结束导入css-->
+
+        <!--下面开始查询输入-->
+        <div class="container">
+            <div class="page-header">
+                <form method="POST" class="form-inline", id="f1">
+                    <!--{{ form.csrf_token }}-->
+                    {{ form.hidden_tag() }}<!--这句很重要，如果没有，一直报错505-->
+
+                            <font size="4">{{ form.bookname_s.label }}:</font>{{ form.bookname_s() }}
+                            <font size="4">{{ form.author_s.label }}:</font>{{ form.author_s() }}
+                            <font size="4">{{ form.submit_s(size=80) }}</font>
+                </form>
+                <h4 id="h4">{{ get_flashed_messages()[0] }}</h4>
+            </div>
+        </div>
+        <!--结束查询输入-->
+
+
+
+         <!--开始显示内容-->
+        {% if pagination %}
+
+            <div class="row">
+
+                    {% for post in posts %}
+                        <div class="col-lg-8 col-xs-push-2">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <div id="td1">
+                                    <a  id="bookname",target="_blank" href="/booklists/{{ post.id }}" >{{ post.bookname }}</a>
+                                </div>
+                                <div id="td2">
+                                    作者:{{ post.author }}
+                                </div>
+                                <div id="td3">
+                                    分类:{{ post.sortedd }}
+                                </div>
+
+                            </div>
+                            <div class="panel-body">
+                                <table class="table table-bordered table-hover">
+                                    <tr>
+                                        <td id="td1">
+                                            {{ (post.introduction)|safe }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td id="td2">书站链接:<a href="{{ post.booklink }}" target="_blank">{{ post.booklink }}</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td id="td3">{{ (post.commentt)|safe }}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="panel-footer">
+                                评分:{{ post.score }},状态:{{ post.state }}
+                            </div>
+                        </div>
+                        </div>
+                    {% endfor %}
+                   <div class="col-lg-6 col-xs-push-4"> {{ render_pagination(pagination) }}</div>
+            </div>
+        {% endif %}
+        <!--结束显示内容-->
+
+
+
+
+    {% endblock %}

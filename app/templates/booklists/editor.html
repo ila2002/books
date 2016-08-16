@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+    {% block content_ds %}
+        {% block style1 %}
+            <link rel="stylesheet" href="{{ url_for('static',filename='css/editor.css') }}">
+        {% endblock %}
+        <center>
+            <form method="post" name="form" >
+
+                    {{ form.hidden_tag() }}
+                    {{ get_flashed_messages()[0] }}
+                    {{ form.bookname.label }}:{{ form.bookname(id='ip2') }}
+                    {{ form.author.label }}:{{ form.author(id='ip3') }}
+                    <br>
+                    {{ form.score.label }}:{{ form.score(id='ip5') }}
+
+                    {{ form.sortedd.label }}:{{ form.sortedd(id='ip4') }}
+                    {{ form.state.label }}:{{ form.state(id='ip6') }}
+                    {{ form.booklink.label }}:{{ form.booklink(id='ip7') }}
+
+                    <br><br>
+                    {{ form.commentt.label }}
+                    {{ (form.commentt(cols=80,rows=7,id="text1"))|safe }}
+                    <br><br>
+                    {{ form.introduction.label }}
+                    {{ (form.introduction(cols=80,rows=7,id="text2"))|safe }}
+                    <br>
+                {{ form.submit(id='ip1') }}
+            </form>
+        </center>
+    {% endblock %}

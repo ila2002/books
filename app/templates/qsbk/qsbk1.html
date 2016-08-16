@@ -1,0 +1,12 @@
+﻿{% extends "base.html" %}
+
+{% block content %}
+    <form action="/qsbk1" method="post">
+
+        <input type="text" name="haha" value="ok"><br>
+
+        <font size="6">糗事百科:</font><input type="radio" name="qsbk_up"  checked="checked" value="True">
+        <input type="submit" value="刷新" style="width:80px;height:40px;font-size:20px">
+    </form>
+    <h1>{{ get_flashed_messages()[0] }}</h1>
+{% endblock %}
